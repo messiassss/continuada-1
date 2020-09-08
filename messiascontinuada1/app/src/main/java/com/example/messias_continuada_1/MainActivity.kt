@@ -15,9 +15,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
+    fun setLabels(){
+
+        tv_title1.setText("NOME")
+        tv_title1.setTextColor(BLACK)
+        tv_title2.setText("Nota média das provas continuadas")
+        tv_title2.setTextColor(BLACK)
+        tv_title3.setTextColor(BLACK)
+        tv_title3.setText("Nota média da prova integral")
+
+    }
+
     fun buttonFun(view: View) {
 
-        if (et_input1.text.isEmpty() || et_input2.text.isEmpty() || et_input3.text.isEmpty()) {
+        if (et_input1.text.isEmpty() || et_input2.text.isEmpty() || et_input3.text.isEmpty()
+            || et_input1.text.length <= 3 || et_input2.text.toString().toDouble() < 0 ||
+            et_input2.text.toString().toDouble() > 10 || et_input3.text.toString().toDouble() < 0
+            || et_input3.text.toString()
+                .toDouble() > 10
+        ) {
 
             if (et_input1.text.isEmpty()) {
                 tv_title1.setTextColor(RED)
@@ -76,13 +92,12 @@ class MainActivity : AppCompatActivity() {
             }
 
 //----------------
+            tv_score.visibility = INVISIBLE
 
         } else {
 
-            if (et_input1.text.length > 3 &&
-                et_input2.text.toString().toDouble() >= 0 &&
-                et_input3.text.toString().toDouble() >= 0
-            ) {
+
+                setLabels()
                 val finalScore = (et_input2.text.toString().toDouble() * 0.4) +
                         (et_input3.text.toString().toDouble() * 0.6)
 
@@ -94,11 +109,7 @@ class MainActivity : AppCompatActivity() {
 
                 tv_score.visibility = VISIBLE
 
-            } else {
-
-                tv_score.visibility = INVISIBLE
             }
 
         }
     }
-}
