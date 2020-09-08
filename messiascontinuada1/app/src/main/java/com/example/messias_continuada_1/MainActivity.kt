@@ -1,7 +1,6 @@
 package com.example.messias_continuada_1
 
-import android.graphics.Color.BLACK
-import android.graphics.Color.RED
+import android.graphics.Color.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -101,10 +100,12 @@ class MainActivity : AppCompatActivity() {
                 val finalScore = (et_input2.text.toString().toDouble() * 0.4) +
                         (et_input3.text.toString().toDouble() * 0.6)
 
+
+            if(finalScore>=6) tv_score.setTextColor(GREEN) else tv_score.setTextColor(RED);
                 val studentName = et_input1.text
                 tv_score.setText(
                     "Olá $studentName , sua nota final é de $finalScore" + " e " +
-                            if (finalScore > 6) "você foi aprovado" else "você foi reprovado"
+                            if (finalScore >=6) "você foi aprovado" else "você foi reprovado"
                 )
 
                 tv_score.visibility = VISIBLE
